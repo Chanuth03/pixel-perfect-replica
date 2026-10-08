@@ -18,7 +18,7 @@ export const Route = createFileRoute("/jobs")({
   component: JobsPage,
 });
 
-const emptyForm = { title: "", description: "", incident: "", scheduled: "", technician: "", team: teams[0], priority: "Medium" as Priority, tools: "" };
+const emptyForm = { title: "", description: "", incident: "", scheduled: "", technician: "", team: teams[0] ?? "Field Services", priority: "Medium" as Priority, tools: "" };
 
 function JobsPage() {
   const [jobs, setJobs] = useState<Job[]>(initialJobs);
@@ -80,7 +80,7 @@ function JobsPage() {
             <section key={col} className="rounded-xl bg-muted/50 p-3">
               <header className="mb-3 flex items-center justify-between px-1">
                 <h2 className="flex items-center gap-2 text-sm font-semibold">
-                  <span className={cn("h-2 w-2 rounded-full", jobStatusStyle[col].split(" ")[1].replace("text-", "bg-"))} />
+                  <span className={cn("h-2 w-2 rounded-full", columnDot[col])} />
                   {col === "To Do" ? "To Do / Unassigned" : col}
                 </h2>
                 <span className="rounded-md bg-card px-1.5 text-xs font-bold text-muted-foreground">{byStatus.get(col)!.length}</span>
