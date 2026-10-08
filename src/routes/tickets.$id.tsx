@@ -51,7 +51,7 @@ function TicketDetail() {
             <div className="mt-6 flex flex-wrap gap-4 border-t pt-5">
               <div className="flex items-center gap-3"><Avatar name={t.raisedBy} className="h-10 w-10 text-sm" /><div><p className="font-semibold">{t.raisedBy}</p><p className="text-xs text-muted-foreground">Finance Analyst</p></div></div>
               <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground sm:ml-auto sm:items-center">
-                <span className="flex items-center gap-1.5"><Mail size={14} />{t.raisedBy.split(" ")[0].toLowerCase()}@company.com</span>
+                <span className="flex items-center gap-1.5"><Mail size={14} />{(t.raisedBy.split(" ")[0] ?? "").toLowerCase()}@company.com</span>
                 <span className="flex items-center gap-1.5"><Phone size={14} />ext. 4412</span>
                 <span className="flex items-center gap-1.5"><Building2 size={14} />Colombo HQ</span>
               </div>

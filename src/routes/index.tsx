@@ -90,8 +90,8 @@ function Dashboard() {
                   </div>
                 )}
                 <div className="flex h-full w-full items-end justify-center gap-1">
-                  <div className="w-full max-w-5 rounded-t-md bg-primary transition-all duration-500" style={{ height: `${(d.open[i] / max) * 85}%`, opacity: hover === null || hover === i ? 1 : 0.4 }} />
-                  <div className="w-full max-w-5 rounded-t-md bg-success transition-all duration-500" style={{ height: `${(d.resolved[i] / max) * 85}%`, opacity: hover === null || hover === i ? 1 : 0.4 }} />
+                  <div className="w-full max-w-5 rounded-t-md bg-primary transition-all duration-500" style={{ height: `${((d.open[i] ?? 0) / max) * 85}%`, opacity: hover === null || hover === i ? 1 : 0.4 }} />
+                  <div className="w-full max-w-5 rounded-t-md bg-success transition-all duration-500" style={{ height: `${((d.resolved[i] ?? 0) / max) * 85}%`, opacity: hover === null || hover === i ? 1 : 0.4 }} />
                 </div>
                 <span className="mt-2 text-xs text-muted-foreground">{l}</span>
               </div>
