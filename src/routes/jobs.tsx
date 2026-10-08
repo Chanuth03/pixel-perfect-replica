@@ -18,7 +18,14 @@ export const Route = createFileRoute("/jobs")({
   component: JobsPage,
 });
 
-const emptyForm = { title: "", description: "", incident: "", scheduled: "", technician: "", team: teams[0] ?? "Field Services", priority: "Medium" as Priority, tools: "" };
+const columnDot: Record<JobStatus, string> = {
+  "To Do": "bg-info",
+  "In Progress": "bg-primary",
+  "On Hold": "bg-warning",
+  Completed: "bg-success",
+};
+
+const emptyForm =  { title: "", description: "", incident: "", scheduled: "", technician: "", team: teams[0] ?? "Field Services", priority: "Medium" as Priority, tools: "" };
 
 function JobsPage() {
   const [jobs, setJobs] = useState<Job[]>(initialJobs);
