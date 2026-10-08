@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
-  LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen,
+  LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen, ClipboardList,
   Search, Bell, ChevronDown, Menu, X, Settings, LogOut, User, Headset,
 } from "lucide-react";
 import { Avatar } from "./Badges";
@@ -9,6 +9,7 @@ import { Avatar } from "./Badges";
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
   { to: "/incidents", label: "Incidents", icon: AlertTriangle, count: 24 },
+  { to: "/jobs", label: "Jobs", icon: ClipboardList },
   { to: "/catalog", label: "Service Catalog", icon: ShoppingBag },
   { to: "/problems", label: "Problem", icon: Bug },
   { to: "/changes", label: "Change", icon: GitPullRequestArrow },
