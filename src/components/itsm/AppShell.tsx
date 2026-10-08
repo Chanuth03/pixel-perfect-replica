@@ -81,9 +81,10 @@ export function AppShell({ children }: { children: ReactNode }) {
               </button>
               {profile && (
                 <div className="card-surface rise absolute right-0 mt-2 w-48 p-1.5 text-sm">
-                  {[[User, "My profile"], [Settings, "Settings"], [LogOut, "Sign out"]].map(([I, l]: any) => (
+                  {[[User, "My profile"], [Settings, "Settings"]].map(([I, l]: any) => (
                     <button key={l} className="flex w-full items-center gap-2 rounded-md px-2.5 py-2 hover:bg-muted"><I size={15} />{l}</button>
                   ))}
+                  <Link to="/login" className="flex w-full items-center gap-2 rounded-md px-2.5 py-2 hover:bg-muted"><LogOut size={15} />Sign out</Link>
                 </div>
               )}
             </div>

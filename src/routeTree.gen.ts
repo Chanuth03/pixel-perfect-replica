@@ -16,6 +16,7 @@ import { Route as ChangesRouteImport } from './routes/changes'
 import { Route as IncidentsRouteImport } from './routes/incidents'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as ProblemsRouteImport } from './routes/problems'
 import { Route as TicketsIdRouteImport } from './routes/tickets.$id'
 
@@ -54,6 +55,11 @@ const KnowledgeRoute = KnowledgeRouteImport.update({
   path: '/knowledge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProblemsRoute = ProblemsRouteImport.update({
   id: '/problems',
   path: '/problems',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
+  '/login': typeof LoginRoute
   '/problems': typeof ProblemsRoute
   '/tickets/$id': typeof TicketsIdRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
+  '/login': typeof LoginRoute
   '/problems': typeof ProblemsRoute
   '/tickets/$id': typeof TicketsIdRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
+  '/login': typeof LoginRoute
   '/problems': typeof ProblemsRoute
   '/tickets/$id': typeof TicketsIdRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/incidents'
     | '/jobs'
     | '/knowledge'
+    | '/login'
     | '/problems'
     | '/tickets/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/incidents'
     | '/jobs'
     | '/knowledge'
+    | '/login'
     | '/problems'
     | '/tickets/$id'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/incidents'
     | '/jobs'
     | '/knowledge'
+    | '/login'
     | '/problems'
     | '/tickets/$id'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   IncidentsRoute: typeof IncidentsRoute
   JobsRoute: typeof JobsRoute
   KnowledgeRoute: typeof KnowledgeRoute
+  LoginRoute: typeof LoginRoute
   ProblemsRoute: typeof ProblemsRoute
   TicketsIdRoute: typeof TicketsIdRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KnowledgeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/problems': {
       id: '/problems'
       path: '/problems'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   IncidentsRoute: IncidentsRoute,
   JobsRoute: JobsRoute,
   KnowledgeRoute: KnowledgeRoute,
+  LoginRoute: LoginRoute,
   ProblemsRoute: ProblemsRoute,
   TicketsIdRoute: TicketsIdRoute,
 }
