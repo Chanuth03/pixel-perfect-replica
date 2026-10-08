@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
-  LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen,
+  LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen, ClipboardList,
   Search, Bell, ChevronDown, Menu, X, Settings, LogOut, User, Headset,
 } from "lucide-react";
 import { Avatar } from "./Badges";
