@@ -14,6 +14,7 @@ import { Route as AssetsRouteImport } from './routes/assets'
 import { Route as CatalogRouteImport } from './routes/catalog'
 import { Route as ChangesRouteImport } from './routes/changes'
 import { Route as IncidentsRouteImport } from './routes/incidents'
+import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as ProblemsRouteImport } from './routes/problems'
 import { Route as TicketsIdRouteImport } from './routes/tickets.$id'
@@ -43,6 +44,11 @@ const IncidentsRoute = IncidentsRouteImport.update({
   path: '/incidents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KnowledgeRoute = KnowledgeRouteImport.update({
   id: '/knowledge',
   path: '/knowledge',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/catalog': typeof CatalogRoute
   '/changes': typeof ChangesRoute
   '/incidents': typeof IncidentsRoute
+  '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
   '/problems': typeof ProblemsRoute
   '/tickets/$id': typeof TicketsIdRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/catalog': typeof CatalogRoute
   '/changes': typeof ChangesRoute
   '/incidents': typeof IncidentsRoute
+  '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
   '/problems': typeof ProblemsRoute
   '/tickets/$id': typeof TicketsIdRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/catalog': typeof CatalogRoute
   '/changes': typeof ChangesRoute
   '/incidents': typeof IncidentsRoute
+  '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
   '/problems': typeof ProblemsRoute
   '/tickets/$id': typeof TicketsIdRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/catalog'
     | '/changes'
     | '/incidents'
+    | '/jobs'
     | '/knowledge'
     | '/problems'
     | '/tickets/$id'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/catalog'
     | '/changes'
     | '/incidents'
+    | '/jobs'
     | '/knowledge'
     | '/problems'
     | '/tickets/$id'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/catalog'
     | '/changes'
     | '/incidents'
+    | '/jobs'
     | '/knowledge'
     | '/problems'
     | '/tickets/$id'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   CatalogRoute: typeof CatalogRoute
   ChangesRoute: typeof ChangesRoute
   IncidentsRoute: typeof IncidentsRoute
+  JobsRoute: typeof JobsRoute
   KnowledgeRoute: typeof KnowledgeRoute
   ProblemsRoute: typeof ProblemsRoute
   TicketsIdRoute: typeof TicketsIdRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IncidentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/knowledge': {
       id: '/knowledge'
       path: '/knowledge'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   CatalogRoute: CatalogRoute,
   ChangesRoute: ChangesRoute,
   IncidentsRoute: IncidentsRoute,
+  JobsRoute: JobsRoute,
   KnowledgeRoute: KnowledgeRoute,
   ProblemsRoute: ProblemsRoute,
   TicketsIdRoute: TicketsIdRoute,
