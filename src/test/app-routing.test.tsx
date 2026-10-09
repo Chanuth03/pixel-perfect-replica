@@ -15,3 +15,12 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 });
+
+// Login continues to `/`, which is the module launcher; each module has its own page.
+describe("Tile navigation destinations", () => {
+  it("keeps the post-login workspace separate from the dashboard", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/").at(-1)?.routeId).toBe("/");
+    expect(router.matchRoutes("/dashboard").at(-1)?.routeId).toBe("/dashboard");
+  });
+});
