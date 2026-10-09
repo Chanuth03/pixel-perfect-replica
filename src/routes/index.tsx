@@ -49,7 +49,7 @@ function Dashboard() {
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {kpis.map((k, i) => (
-          <div key={k.label} className="card-surface rise p-5 transition-transform hover:-translate-y-0.5" style={{ animationDelay: `${i * 60}ms` }}>
+          <div key={k.label} className="card-interactive rise p-5" style={{ animationDelay: `${i * 60}ms` }}>
             <div className="flex items-start justify-between">
               <span className={`grid h-10 w-10 place-items-center rounded-lg ${k.tone}`}><k.icon size={19} /></span>
               {k.live && <span className="flex items-center gap-1.5 text-[11px] font-semibold text-destructive"><span className="pulse-dot h-1.5 w-1.5 rounded-full bg-destructive" />LIVE</span>}
