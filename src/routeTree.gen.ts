@@ -14,6 +14,7 @@ import { Route as AssetsRouteImport } from './routes/assets'
 import { Route as CatalogRouteImport } from './routes/catalog'
 import { Route as ChangesRouteImport } from './routes/changes'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as EquipmentRouteImport } from './routes/equipment'
 import { Route as IncidentsRouteImport } from './routes/incidents'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
@@ -44,6 +45,11 @@ const ChangesRoute = ChangesRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipmentRoute = EquipmentRouteImport.update({
+  id: '/equipment',
+  path: '/equipment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IncidentsRoute = IncidentsRouteImport.update({
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/catalog': typeof CatalogRoute
   '/changes': typeof ChangesRoute
   '/dashboard': typeof DashboardRoute
+  '/equipment': typeof EquipmentRoute
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/catalog': typeof CatalogRoute
   '/changes': typeof ChangesRoute
   '/dashboard': typeof DashboardRoute
+  '/equipment': typeof EquipmentRoute
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/catalog': typeof CatalogRoute
   '/changes': typeof ChangesRoute
   '/dashboard': typeof DashboardRoute
+  '/equipment': typeof EquipmentRoute
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/catalog'
     | '/changes'
     | '/dashboard'
+    | '/equipment'
     | '/incidents'
     | '/jobs'
     | '/knowledge'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/catalog'
     | '/changes'
     | '/dashboard'
+    | '/equipment'
     | '/incidents'
     | '/jobs'
     | '/knowledge'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/catalog'
     | '/changes'
     | '/dashboard'
+    | '/equipment'
     | '/incidents'
     | '/jobs'
     | '/knowledge'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   CatalogRoute: typeof CatalogRoute
   ChangesRoute: typeof ChangesRoute
   DashboardRoute: typeof DashboardRoute
+  EquipmentRoute: typeof EquipmentRoute
   IncidentsRoute: typeof IncidentsRoute
   JobsRoute: typeof JobsRoute
   KnowledgeRoute: typeof KnowledgeRoute
@@ -208,6 +221,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipment': {
+      id: '/equipment'
+      path: '/equipment'
+      fullPath: '/equipment'
+      preLoaderRoute: typeof EquipmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/incidents': {
@@ -261,6 +281,7 @@ const rootRouteChildren: RootRouteChildren = {
   CatalogRoute: CatalogRoute,
   ChangesRoute: ChangesRoute,
   DashboardRoute: DashboardRoute,
+  EquipmentRoute: EquipmentRoute,
   IncidentsRoute: IncidentsRoute,
   JobsRoute: JobsRoute,
   KnowledgeRoute: KnowledgeRoute,
