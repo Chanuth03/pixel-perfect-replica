@@ -36,8 +36,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           {nav.map(({ to, label, icon: Icon, ...rest }) => (
             <Link key={to} to={to} onClick={() => setOpen(false)}
               activeOptions={{ exact: to === "/" }}
-              className="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-muted transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-foreground">
-              <Icon size={17} className="group-data-[status=active]:text-primary" />
+              className="group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-muted transition-all hover:bg-sidebar-accent hover:text-sidebar-foreground data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-foreground data-[status=active]:shadow-[inset_0_1px_0_0_oklch(1_0_0/0.06),0_4px_12px_-4px_oklch(0_0_0/0.5)]">
+              <span className="absolute left-0 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-primary opacity-0 transition-opacity group-data-[status=active]:opacity-100" />
+              <Icon size={17} className="transition-transform group-hover:scale-110 group-data-[status=active]:text-primary" />
               <span className="flex-1">{label}</span>
               {"count" in rest && <span className="rounded-md bg-primary px-1.5 text-[10px] font-bold text-primary-foreground">{rest.count}</span>}
             </Link>

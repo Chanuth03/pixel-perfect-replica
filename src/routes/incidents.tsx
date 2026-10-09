@@ -30,7 +30,7 @@ function Incidents() {
   return (
     <>
       <PageHeader title="Incidents" subtitle={`${rows.filter((r) => r.status !== "Resolved").length} open incidents across all queues`}
-        action={<button onClick={() => setOpen(true)} className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90"><Plus size={16} />Create New Incident</button>} />
+        action={<button onClick={() => setOpen(true)} className="btn-primary"><Plus size={16} />Create New Incident</button>} />
 
       <div className="card-surface overflow-hidden">
         <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center">
@@ -108,7 +108,7 @@ function CreateModal({ onClose, onCreate, nextId }: { onClose: () => void; onCre
         </div>
         <div className="flex justify-end gap-2 border-t p-4">
           <button type="button" onClick={onClose} className="rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted">Cancel</button>
-          <button className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90">Create Incident</button>
+          <button className="btn-primary">Create Incident</button>
         </div>
       </form>
     </div>
