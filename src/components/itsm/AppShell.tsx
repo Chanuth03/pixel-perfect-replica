@@ -29,6 +29,27 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
           <div className="ml-auto flex shrink-0 items-center gap-2">
             <div className="relative">
+              <Button variant="ghost" size="icon" onClick={() => { setThemeOpen(!themeOpen); setNotif(false); setProfile(false); }} className="grid h-9 w-9 place-items-center rounded-lg hover:bg-muted" aria-label="Change site color">
+                <Palette size={18} />
+              </Button>
+              {themeOpen && (
+                <div className="card-surface rise absolute right-0 mt-2 w-52 p-1.5 text-sm">
+                  <p className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Site color</p>
+                  {themes.map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => { applyTheme(t.id); setTheme(t.id); setThemeOpen(false); }}
+                      className="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 hover:bg-muted"
+                    >
+                      <span className="h-4 w-4 rounded-full border border-black/10" style={{ background: t.swatch }} />
+                      <span className="flex-1 text-left">{t.label}</span>
+                      {theme === t.id && <Check size={15} className="text-primary" />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="relative">
               <Button variant="ghost" size="icon" onClick={() => { setNotif(!notif); setProfile(false); }} className="relative grid h-9 w-9 place-items-center rounded-lg hover:bg-muted" aria-label="Notifications">
                 <Bell size={18} />
                 <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-destructive ring-2 ring-card" />
