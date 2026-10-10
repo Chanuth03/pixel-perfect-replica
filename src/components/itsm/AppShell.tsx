@@ -1,12 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Search, Bell, ChevronDown, Settings, LogOut, User, Headset, Grid2X2 } from "lucide-react";
+import { Search, Bell, ChevronDown, Settings, LogOut, User, Headset, Grid2X2, Palette, Check } from "lucide-react";
 import { Avatar } from "./Badges";
 import { Button } from "@/components/ui/button";
+import { themes, applyTheme, getSavedTheme } from "@/lib/theme";
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState(false);
   const [notif, setNotif] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
+  const [theme, setTheme] = useState(getSavedTheme);
 
   return (
     <div className="min-h-screen">
@@ -25,6 +28,27 @@ export function AppShell({ children }: { children: ReactNode }) {
             <kbd className="absolute right-2.5 top-1/2 hidden -translate-y-1/2 rounded border bg-card px-1.5 font-mono text-[10px] text-muted-foreground sm:block">⌘K</kbd>
           </div>
           <div className="ml-auto flex shrink-0 items-center gap-2">
+            <div className="relative">
+              <Button variant="ghost" size="icon" onClick={() => { setThemeOpen(!themeOpen); setNotif(false); setProfile(false); }} className="grid h-9 w-9 place-items-center rounded-lg hover:bg-muted" aria-label="Change site color">
+                <Palette size={18} />
+              </Button>
+              {themeOpen && (
+                <div className="card-surface rise absolute right-0 mt-2 w-52 p-1.5 text-sm">
+                  <p className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">Site color</p>
+                  {themes.map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => { applyTheme(t.id); setTheme(t.id); setThemeOpen(false); }}
+                      className="flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 hover:bg-muted"
+                    >
+                      <span className="h-4 w-4 rounded-full border border-black/10" style={{ background: t.swatch }} />
+                      <span className="flex-1 text-left">{t.label}</span>
+                      {theme === t.id && <Check size={15} className="text-primary" />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="relative">
               <Button variant="ghost" size="icon" onClick={() => { setNotif(!notif); setProfile(false); }} className="relative grid h-9 w-9 place-items-center rounded-lg hover:bg-muted" aria-label="Notifications">
                 <Bell size={18} />
