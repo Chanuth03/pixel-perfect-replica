@@ -7,6 +7,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppShell } from "@/components/itsm/AppShell";
+import { applyTheme, getSavedTheme } from "@/lib/theme";
 
 function NotFoundComponent() {
   return (
@@ -78,6 +79,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const bare = pathname === "/login";
+  useEffect(() => { applyTheme(getSavedTheme()); }, []);
   return (
     <QueryClientProvider client={queryClient}>
       {bare ? <Outlet /> : <AppShell><Outlet /></AppShell>}
