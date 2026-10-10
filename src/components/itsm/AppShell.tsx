@@ -1,12 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Search, Bell, ChevronDown, Settings, LogOut, User, Headset, Grid2X2 } from "lucide-react";
+import { Search, Bell, ChevronDown, Settings, LogOut, User, Headset, Grid2X2, Palette, Check } from "lucide-react";
 import { Avatar } from "./Badges";
 import { Button } from "@/components/ui/button";
+import { themes, applyTheme, getSavedTheme } from "@/lib/theme";
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState(false);
   const [notif, setNotif] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
+  const [theme, setTheme] = useState(getSavedTheme);
 
   return (
     <div className="min-h-screen">
