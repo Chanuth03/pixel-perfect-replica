@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen, ClipboardList, MonitorCog, ArrowUpRight } from "lucide-react";
+import { LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen, ClipboardList, MonitorCog, Trophy, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({

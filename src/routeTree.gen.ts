@@ -15,6 +15,7 @@ import { Route as CatalogRouteImport } from './routes/catalog'
 import { Route as ChangesRouteImport } from './routes/changes'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as EquipmentRouteImport } from './routes/equipment'
+import { Route as IncentiveRouteImport } from './routes/incentive'
 import { Route as IncidentsRouteImport } from './routes/incidents'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
@@ -50,6 +51,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const EquipmentRoute = EquipmentRouteImport.update({
   id: '/equipment',
   path: '/equipment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IncentiveRoute = IncentiveRouteImport.update({
+  id: '/incentive',
+  path: '/incentive',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IncidentsRoute = IncidentsRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/changes': typeof ChangesRoute
   '/dashboard': typeof DashboardRoute
   '/equipment': typeof EquipmentRoute
+  '/incentive': typeof IncentiveRoute
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/changes': typeof ChangesRoute
   '/dashboard': typeof DashboardRoute
   '/equipment': typeof EquipmentRoute
+  '/incentive': typeof IncentiveRoute
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/changes': typeof ChangesRoute
   '/dashboard': typeof DashboardRoute
   '/equipment': typeof EquipmentRoute
+  '/incentive': typeof IncentiveRoute
   '/incidents': typeof IncidentsRoute
   '/jobs': typeof JobsRoute
   '/knowledge': typeof KnowledgeRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/changes'
     | '/dashboard'
     | '/equipment'
+    | '/incentive'
     | '/incidents'
     | '/jobs'
     | '/knowledge'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/changes'
     | '/dashboard'
     | '/equipment'
+    | '/incentive'
     | '/incidents'
     | '/jobs'
     | '/knowledge'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/changes'
     | '/dashboard'
     | '/equipment'
+    | '/incentive'
     | '/incidents'
     | '/jobs'
     | '/knowledge'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   ChangesRoute: typeof ChangesRoute
   DashboardRoute: typeof DashboardRoute
   EquipmentRoute: typeof EquipmentRoute
+  IncentiveRoute: typeof IncentiveRoute
   IncidentsRoute: typeof IncidentsRoute
   JobsRoute: typeof JobsRoute
   KnowledgeRoute: typeof KnowledgeRoute
@@ -228,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/equipment'
       fullPath: '/equipment'
       preLoaderRoute: typeof EquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/incentive': {
+      id: '/incentive'
+      path: '/incentive'
+      fullPath: '/incentive'
+      preLoaderRoute: typeof IncentiveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/incidents': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChangesRoute: ChangesRoute,
   DashboardRoute: DashboardRoute,
   EquipmentRoute: EquipmentRoute,
+  IncentiveRoute: IncentiveRoute,
   IncidentsRoute: IncidentsRoute,
   JobsRoute: JobsRoute,
   KnowledgeRoute: KnowledgeRoute,
