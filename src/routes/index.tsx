@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen, ClipboardList, MonitorCog, ArrowUpRight } from "lucide-react";
+import { LayoutDashboard, AlertTriangle, ShoppingBag, Bug, GitPullRequestArrow, HardDrive, BookOpen, ClipboardList, MonitorCog, Trophy, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -26,6 +26,8 @@ const modules = [
   { to: "/assets", label: "Assets", icon: HardDrive, tone: "bg-info-soft text-info" },
   { to: "/knowledge", label: "Knowledge Base", icon: BookOpen, tone: "bg-success-soft text-success" },
   { to: "/equipment", label: "Equipment Card", icon: MonitorCog, tone: "bg-warning-soft text-warning" },
+  { to: "/incentive", label: "Incentive", icon: Trophy, tone: "bg-success-soft text-success" },
+
 ] as const;
 
 function Workspace() {
